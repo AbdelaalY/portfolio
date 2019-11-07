@@ -101,7 +101,7 @@ class Bacteria
     int closedis = 500;
     int indexofclosefood = 0;
     if (feedlvl < 45) {
-      for (int x = 0; x < 10; x++ ) {
+      for (int x = 0; x < onion.size(); x++ ) {
         if (this.x < onion.get(x).x) {
           if (dist(this.x, this.y, onion.get(x).x, onion.get(x).y)< closedis) {          
             closedis = (int)dist(this.x, this.y, onion.get(x).x, onion.get(x).y);

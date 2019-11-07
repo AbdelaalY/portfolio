@@ -35,7 +35,7 @@ void draw()
 
 void cheqNom(int index) {
     if (petri.get(index).feedlvl < 45) {
-      for (int x = 0; x < 10; x++) {
+      for (int x = 0; x < onion.size(); x++) {
         if (petri.get(index).x <= onion.get(x).x+5 && petri.get(index).x >= onion.get(x).x-5 && petri.get(index).y <= onion.get(x).y+5 && petri.get(index).y >= onion.get(x).y-5 ) {
           petri.get(index).setFeedlvl( petri.get(index).feedlvl+ onion.get(x).yummylvl);
           onion.set(x, new Food((int)random(0, 500), (int)random(0, 500)));
@@ -43,7 +43,7 @@ void cheqNom(int index) {
       }
     } else {
       for (int x = 0; x < petri.size(); x++) {
-        if (petri.get(index).x != petri.get(x).x && petri.get(index).x == petri.get(x).x && petri.get(index).y == petri.get(x).y) {
+        if (petri.get(index).x != petri.get(x).x && petri.get(index).x >= petri.get(x).x-2 && petri.get(index).x <= petri.get(x).x+2 && petri.get(index).y >= petri.get(x).y-2 &&  petri.get(index).y >= petri.get(x).y+2) {
           petri.get(index).setFeedlvl(petri.get(index).feedlvl + petri.get(x).feedlvl);
          petri.get(x).setFeedlvl( petri.get(x).feedlvl - 30);
          if(petri.get(x).feedlvl <= 0)
