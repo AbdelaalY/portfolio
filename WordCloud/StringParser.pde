@@ -60,9 +60,22 @@ class StringParser {
     }
     return count-1;
   }
+  
+  int countSentences(){
+  String[] sentences = line.split("\\.");
+  return sentences.length;
+  }
+  
+  double readingRainbow(){
+  return (206.835 - 1.015)*(countWords()/countSentences())-84.6*(countSyllables(line.toLowerCase())/countWords());  
+}
+
+int lvl(){
+return (int)(0.39*(countWords()/countSentences())+ 11.8 *(countSyllables(line.toLowerCase())/countWords())-15.59);
+}
 
   String toString() {  
-    String done = Arrays.toString(words)+"\n"+countWords()+"\n"+countLetters()+"\n"+countVowels()+"\n"+countSyllables(line.toLowerCase());
+    String done = Arrays.toString(words)+"\n Words: "+countWords()+"\n Letters: "+countLetters()+"\n Vowels: "+countVowels()+"\n Syllables: "+countSyllables(line.toLowerCase())+"\n Sentences: "+countSentences()+"\n Reading Ease: "+readingRainbow();
     return done;
   }
 }

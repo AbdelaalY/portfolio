@@ -1,18 +1,25 @@
 import java.util.Scanner;
-Scanner scan;
+Scanner scan,scone;
 void setup() {
-  try{
-    scan = new Scanner(new File("Desktop/Joker.txt"));
-    scan.useDelimiter(".");
-    while(scan.hasNextLine()){
-    StringParser swag = new StringParser(scan.nextLine());
-    println(swag);
+  try {
+    scan = new Scanner(new File("Desktop/WordCloud/data/Joker.txt"));
+    scone = new Scanner(new File("Desktop/WordCloud/data/Joker.txt"));
+    while(scone.hasNext()){
+    
+     StringParser swoog = new StringParser(scone.next());
+    println(swoog);
+    
     }
-}catch(Exception e){
-println(e);
-} finally{
-scan.close();
-}
-  StringParser text = new StringParser("Hello, I am nine syllables long. And it's great!");
- println(text);
+    scan.useDelimiter("\\s;:,");
+    while (scan.hasNext()) {
+      StringParser swag = new StringParser(scan.next());
+      println(swag);
+    }
+  }
+  catch(Exception e) {
+    println(e);
+  } 
+  finally {
+    scan.close();
+  }
 }
