@@ -18,14 +18,29 @@ public class Person implements Comparable<Person>
 
   public int compareTo(Person other)
   {
-    if(){
-    
-    }
-     return 0;
+    if (myYear > other.myYear) {
+      return 1;
+    } 
+    if (myYear < other.myYear) 
+      return -1;
+
+    if (myMonth > other.myMonth)
+      return 1;
+
+    if (myMonth < other.myMonth)
+      return -1;
+
+    if (myDay > other.myDay)
+      return 1;
+
+    if (myDay < other.myDay)
+      return -1;
+
+    return 0;
   }
 
   public String toString( )
   {
-     return "";
+    return myName;
   }
 }
