@@ -8,6 +8,8 @@ SpanishToEnglish jefe = new SpanishToEnglish();
 for(String j : str)
 jefe.putEntry(j);
 
-jefe.translate();
+jefe.translate(sent);
+
+println(jefe);
 
 }
