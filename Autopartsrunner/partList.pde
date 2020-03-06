@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -9,50 +8,26 @@ import static java.lang.System.*;
 public class PartList
 {
   private TreeMap<Part, Integer> partsMap;
-  
-  public PartList()
-  {
 
-
-  }
-  
   public PartList(String fileName)
   {
-    //loadStrings() or:
-    try
-    {
-      Scanner file = new Scanner(new File("lab08d.dat"));
-      //add code here to read from the file 
-      //and add Parts to the map
-
-
-
-
-    }
-    catch( IOException e )  //Most specific exceptions must be listed 1st
-    {
-      out.println(e);
-    }
-    catch( RuntimeException e )
-    {
-      out.println(e);
-    }
-    catch( Exception e )
-    {
-      out.println(e);
-    }
-    finally
-    {
-      //no code needed here
+    partsMap = new TreeMap<Part, Integer>();
+    String[] txt = loadStrings(fileName);
+    for (String line : txt) {
+      Part p = new Part(line);
+      if (partsMap.get(p) == null) {
+        partsMap.put(p, 1);
+      } else{
+      partsMap.put(p, partsMap.get(p)+1);
+      }
     }
   }
-  
+
   public String toString()
   {
     String output="";
-
-
-
+    for (Part k : partsMap.keySet())
+      output += ""+k+"-"+partsMap.get(k)+"\n";
 
     return output;
   }

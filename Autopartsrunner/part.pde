@@ -6,25 +6,47 @@ public class Part implements Comparable<Part>
   public Part(String line) 
   {
     String[] list = line.split(" ");
-    theRest = list[0]+list[1]+list[2];
-    
-
-
+    if (list.length == 6) {
+      theRest = list[0]+" "+list[1]+" "+list[2];
+      make = list[3];
+      model = list[4];
+      year = parseInt(list[5]);
+    } else{
+    theRest = list[0]+" "+list[1];
+    make = list[2];
+    model = list[3];
+    year = parseInt(list[4]);
+    }
   }
 
   //have to have compareTo if implements Comparable
   public int compareTo( Part other )
   {
 
+    if (make.compareTo(other.make) > 0)
+      return 1;
+
+    if (make.compareTo(other.make) < 0)
+      return -1;
+
+    if (model.compareTo(other.model) > 0)
+      return 1;
+
+    if (model.compareTo(other.model) < 0)
+      return -1;
+
+    if (year > other.year)
+      return 1;
+
+    if (year < other.year)
+      return -1;
 
 
-
-
-    return 0;
+    return this.theRest.compareTo(other.theRest);
   }
 
   public String toString()
   {
-    return "";
+    return make+" "+model+" "+year+" "+" "+theRest;
   }
 }
