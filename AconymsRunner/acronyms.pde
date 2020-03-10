@@ -8,7 +8,7 @@ import static java.lang.System.*;
 public class Acronyms
 {
   private Map<String, String> acronymTable;
-  private String output = "";
+  private String foutput = "";
 
   public Acronyms()
   {
@@ -17,32 +17,36 @@ public class Acronyms
 
   public void putEntry(String entry)
   {
-    String[] str = entry.split("-");
+    String[] str = entry.split(" - ");
 
     if (acronymTable.get(str[0]) == null)
-      acronymTable.put(str[0].replaceAll(" ",""), str[1].replaceAll(" ",""));
+      acronymTable.put(str[0], str[1]);
     
   }
 
   public void convert(String[] sent)
   {
+    String output = "";
     for (String str : sent) {
       Scanner chop = new Scanner(str);
       Scanner slice = new Scanner(str);
       while (chop.hasNext()) {
-        if (acronymTable.get(slice.next()) == null) {
+        if (acronymTable.get(slice.next().replaceAll("\\.","")) == null) {
           output+=chop.next()+" ";
         } else {
-          output+=acronymTable.get(chop.next())+" ";
+          output+=acronymTable.get(chop.next().replaceAll("\\.",""))+" ";
         }
       }
-      output+=".\n";
+      if(output.contains("//.") == false)
+      output+=".";
+      
+      output+="\n";
     }
+    foutput+=output;
   }
 
   public String toString()
   {
-     println(acronymTable.values());
-    return acronymTable.toString().replaceAll("\\,", "\n")+"\n"+output;
+    return acronymTable.toString().replaceAll("\\,", "\n")+"\n"+foutput;
   }
 }
